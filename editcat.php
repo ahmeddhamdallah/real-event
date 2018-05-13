@@ -1,7 +1,11 @@
 <?php
 
+
 include_once("database/db_conection.php");
 
+ 
+
+        
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +66,7 @@ include_once("database/db_conection.php");
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="sportsmanager.php" class="navbar-brand">News-Admin</a>
+            <a href="index.php" class="navbar-brand">News-Admin</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -111,6 +115,8 @@ include_once("database/db_conection.php");
               <div class="form-group">
                 <label for="addcategoryname11">Category Name</label>
                 <input type="text" class="form-control" name="addcategoryname" value="" id="addcategoryname" placeholder="Category name" maxlength="100" required  autofocus>
+                <label for="addcategoryname11">Category link</label>
+                <input type="text" class="form-control" name="addcategoryname1" value="" id="addcategoryname1" placeholder="Category link" maxlength="100" required  autofocus>
         
               </div>
               
@@ -166,7 +172,7 @@ include_once("database/db_conection.php");
             <tr>  
                 <th class="col-md-1 col-sm-1">Category NO</th>
                 <th class="col-md-3 col-sm-3">Category Name</th>             
-                
+                <th class="col-md-3 col-sm-3">Category link</th> 
                 <th class="col-md-4 col-sm-4">Category Path</th>
                 <th class="col-md-2 col-sm-2">Action</th>              
             </tr>  
@@ -202,7 +208,8 @@ include_once("database/db_conection.php");
             while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.  
             {  
                 $category_id=$row[0]; 
-                $category_name=$row[1];   
+                $category_name=$row[1];  
+                $category_page=$row[3]; 
                 $cat_parent_id=$row[2];   
                  
            $view_parentid_query="select cat_name,parent_id from category where id='$category_id'";
@@ -229,7 +236,9 @@ include_once("database/db_conection.php");
                 <td class="col-md-3 col-sm-3">
                     <span id="second_<?php echo $category_id; ?>" class="text"><?php echo $category_name; ?></span>                    
                 </td> 
-               
+               <td class="col-md-3 col-sm-3">
+                    <span id="second_<?php echo $category_id; ?>" class="text"><?php echo $category_page; ?></span>                    
+                </td> 
                 <td class="col-md-4 col-sm-4">
                   <span id="fourth_<?php echo $category_id; ?>" class="text"><?php echo $return_cat; ?></span>   
                 </td>  
